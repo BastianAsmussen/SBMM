@@ -35,14 +35,8 @@ public class Elo {
 	 */
 	public static int adjustRating(Player playerA, Player playerB, boolean win) {
 		
-		final int winStreakA = playerA.getStreak();
-		final int winStreakB = playerB.getStreak();
-		
-		final int ratingBoosterA = winStreakA > 0 ? winStreakA * 10 : winStreakA * -10;
-		final int ratingBoosterB = winStreakB > 0 ? winStreakB * 10 : winStreakB * -10;
-		
-		final int ratingA = playerA.getRating() + ratingBoosterA;
-		final int ratingB = playerB.getRating() + ratingBoosterB;
+		final int ratingA = playerA.getInternalRating();
+		final int ratingB = playerB.getInternalRating();
 		
 		double expectedScore = getProbability(ratingA, ratingB);
 		int actualScore = win ? 1 : 0;

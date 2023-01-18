@@ -12,15 +12,8 @@ public class Leaderboard {
 		return new ArrayList<>(players.subList(0, size));
 	}
 	
-	public static int getAverageSkillRating(List<Player> leaderboard) {
+	public static double getAverageSkillRating(List<Player> leaderboard) {
 		
-		int ratingTotal = 0;
-		
-		for (Player player : leaderboard) {
-			
-			ratingTotal += player.getRating();
-		}
-		
-		return ratingTotal / leaderboard.size();
+		return leaderboard.stream().mapToInt(Player::getRating).average().orElse(0);
 	}
 }

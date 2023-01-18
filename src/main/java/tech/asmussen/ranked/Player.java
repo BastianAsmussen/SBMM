@@ -8,7 +8,6 @@ public class Player {
 	private final String name;
 	
 	private int rating;
-	private int internalRating;
 	
 	private int wins;
 	private int losses;
@@ -26,8 +25,12 @@ public class Player {
 		this.losses = losses;
 		this.draws = draws;
 		
-		internalRating = rating;
 		streak = 0;
+	}
+	
+	public int getInternalRating() {
+		
+		return rating + streak * 10;
 	}
 	
 	public int getGamesPlayed() {
