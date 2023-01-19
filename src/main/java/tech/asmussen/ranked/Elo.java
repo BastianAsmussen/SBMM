@@ -5,7 +5,7 @@ public class Elo {
 	public static final int MAX_RATING = 5_000;
 	public static final int MIN_RATING = 0;
 	
-	public static final int ASSUMED_RATING_DIFFERENCE = 500;
+	public static final int ASSUMED_RATING_DIFFERENCE = 100;
 	public static final double ADJUSTMENT_SENSITIVITY = 25;
 	
 	/**
