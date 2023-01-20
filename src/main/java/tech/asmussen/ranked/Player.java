@@ -24,8 +24,6 @@ public class Player {
 		this.wins = wins;
 		this.losses = losses;
 		this.draws = draws;
-		
-		streak = 0;
 	}
 	
 	public int getInternalRating() {
@@ -71,7 +69,7 @@ public class Player {
 				streak++;
 			}
 			
-		// Else, decrease their streak.
+			// Else, decrease their streak.
 		} else {
 			
 			if (streak > 0) {

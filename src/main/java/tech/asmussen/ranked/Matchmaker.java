@@ -14,7 +14,7 @@ public class Matchmaker {
 		// If skill based matchmaking isn't enabled, return the first two players in the queue as a match.
 		if (!isSkillBased) {
 			
-			return new Player[] { queue.poll(), queue.poll() };
+			return new Player[]{queue.poll(), queue.poll()};
 		}
 		
 		// Get the first player in the queue.
@@ -46,7 +46,7 @@ public class Matchmaker {
 				
 				queue.remove(playerB);
 				
-				return new Player[] { playerA, playerB };
+				return new Player[]{playerA, playerB};
 			}
 		}
 		

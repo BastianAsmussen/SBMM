@@ -5,8 +5,8 @@ public class Elo {
 	public static final int MAX_RATING = 5_000;
 	public static final int MIN_RATING = 0;
 	
-	public static final int ASSUMED_RATING_DIFFERENCE = 100;
-	public static final double ADJUSTMENT_SENSITIVITY = 25;
+	public static final int ASSUMED_RATING_DIFFERENCE = 400;
+	public static final int GAIN_CAP = 40;
 	
 	/**
 	 * Calculates the probability of player A winning against player B.
@@ -26,11 +26,11 @@ public class Elo {
 	/**
 	 * Calculates the new rating of player A after a match against player B.
 	 * <p>
-	 * <b>Formula:</b> ratingA + {@link #ADJUSTMENT_SENSITIVITY} * (scoreA - probabilityA)
+	 * <b>Formula:</b> ratingA + {@link #GAIN_CAP} * (scoreA - probabilityA)
 	 *
 	 * @param playerA The first player.
 	 * @param playerB The second player.
-	 * @param win Whether the first player won the match or not.
+	 * @param win     Whether the first player won the match or not.
 	 * @return The new rating of the first player.
 	 */
 	public static int adjustRating(Player playerA, Player playerB, boolean win) {
@@ -42,10 +42,10 @@ public class Elo {
 		int actualScore = win ? 1 : 0;
 		
 		// The new rating is the old rating plus the adjustment sensitivity times the difference between the expected and actual score.
-		int newRating = (int) (ratingA + ADJUSTMENT_SENSITIVITY * (actualScore - expectedScore));
+		int newRating = (int) (ratingA + GAIN_CAP * (actualScore - expectedScore));
 		
 		// If the new rating is higher than the highest possible rating, set it to the highest possible rating.
-		if (newRating > MAX_RATING) {
+		if (newRating >= MAX_RATING) {
 			
 			return MAX_RATING;
 			
