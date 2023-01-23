@@ -2,16 +2,34 @@ package tech.asmussen.ranked;
 
 public enum Rank {
 	
-	BRONZE, SILVER, GOLD, PLATINUM, DIAMOND, MASTER, GRANDMASTER;
+	BRONZE(1_499),
+	SILVER(1_999),
+	GOLD(2_499),
+	PLATINUM(2_999),
+	DIAMOND(3_499),
+	MASTER(3_999),
+	GRANDMASTER(Elo.MAX_RATING);
+	
+	private final int threshold;
+	
+	Rank(int threshold) {
+		
+		this.threshold = threshold;
+	}
 	
 	public static Rank box(int rating) {
 		
-		if (rating < 1_500) return BRONZE;
-		else if (rating < 2_000) return SILVER;
-		else if (rating < 2_500) return GOLD;
-		else if (rating < 3_000) return PLATINUM;
-		else if (rating < 3_500) return DIAMOND;
-		else if (rating < 4_000) return MASTER;
-		else return GRANDMASTER;
+		for (Rank rank : values()) {
+			
+			if (rating < rank.getThreshold())
+				return rank;
+		}
+		
+		return GRANDMASTER;
+	}
+	
+	public int getThreshold() {
+		
+		return threshold;
 	}
 }

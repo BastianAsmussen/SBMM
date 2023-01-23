@@ -8,7 +8,7 @@ import java.util.*;
 public class SBMM {
 	
 	public static void main(String[] args) {
-		/*
+		
 		final long startTime = System.currentTimeMillis();
 		final int numberOfPlayers = 10_000_000;
 		
@@ -45,7 +45,7 @@ public class SBMM {
 			
 			if (match == null) {
 				
-				System.out.println("No more fair matches could be found, " + i + " matches were made.");
+				System.out.println("No more fair matches could be found, " + i + " matches were made!");
 				
 				break;
 			}
@@ -94,12 +94,12 @@ public class SBMM {
 		
 		System.out.printf("Took %s.\n", Time.formatMillis(System.currentTimeMillis() - startTime));
 		
-		List<Player> leaderboard = Leaderboard.generateLeaderboard(Arrays.asList(players), 1_000);
+		List<Player> leaderboard = Leaderboard.generateLeaderboard(Arrays.asList(players), 500);
 		
 		double averageSkillRating = Leaderboard.getAverageSkillRating(leaderboard);
 		Rank averageRank = Rank.box((int) Math.round(averageSkillRating));
 		
-		System.out.printf("Average Skill Rating of Top 1000: %.2f Elo, %s\n", averageSkillRating, averageRank);
+		System.out.printf("Average Skill Rating of Top 500: %.2f Elo, %s\n", averageSkillRating, averageRank);
 		
 		for (int i = 0; i < leaderboard.size(); i++) {
 			
@@ -109,23 +109,5 @@ public class SBMM {
 			
 			System.out.printf("%d. %s (%d Games, Streak: %d, %d Elo, %s)\n", i + 1, player.getName(), player.getGamesPlayed(), player.getStreak(), rating, Rank.box(rating));
 		}
-		
-		 */
-		
-		final int bronze = 1_000;
-		final int silver = 1_500;
-		final int gold = 2_000;
-		final int platinum = 2_500;
-		final int diamond = 3_000;
-		final int master = 3_500;
-		final int grandmaster = 4_000;
-		
-		System.out.println(Rank.box(bronze));
-		System.out.println(Rank.box(silver));
-		System.out.println(Rank.box(gold));
-		System.out.println(Rank.box(platinum));
-		System.out.println(Rank.box(diamond));
-		System.out.println(Rank.box(master));
-		System.out.println(Rank.box(grandmaster));
 	}
 }

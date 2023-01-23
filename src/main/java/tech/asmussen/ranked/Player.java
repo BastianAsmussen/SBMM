@@ -28,7 +28,23 @@ public class Player {
 	
 	public int getInternalRating() {
 		
-		return rating + streak * 10;
+		/*
+		 The streak can be positive or negative, and is multiplied by 10 to increase the effect of the streak.
+		 A win sets the streak to 1, a loss sets the streak to -1, and a draw sets the streak to 0.
+		 
+		 Formula:
+		 - r + s * c
+		 - r = rating
+		 - s = streak
+		 - c = cap
+		 
+		 Example 1:
+		 - Rating: 1,000
+		 - Streak: 5
+		 - Cap: 40
+		 - Internal Rating: 1,200
+		 */
+		return rating + streak * Elo.personalizeGainCap(this);
 	}
 	
 	public int getGamesPlayed() {
